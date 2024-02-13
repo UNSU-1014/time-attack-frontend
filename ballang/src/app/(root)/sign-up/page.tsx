@@ -3,12 +3,13 @@
 import API from "@/api/index.api";
 import Page from "@/components/Page";
 import { useAuth } from "@/contexts/auth.context";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useMutation } from "react-query";
 
 function SignUpPage() {
   const { mutateAsync } = useMutation({ mutationFn: API.auth.signUp });
-
+  const route = useRouter();
   const emailInputRef = useRef<HTMLInputElement>(null);
   const pw1InputRef = useRef<HTMLInputElement>(null);
   const pw2InputRef = useRef<HTMLInputElement>(null);
@@ -30,6 +31,7 @@ function SignUpPage() {
       password: pw1Value,
     });
     logIn(accessToken);
+    route.replace("/");
   };
 
   return (
