@@ -13,7 +13,6 @@ async function getClothes() {
 
 async function TrendingClothes() {
   const clothes = await getClothes();
-  console.log(clothes);
   return <ClothCardList title="Trending" clothes={clothes || []} />;
 }
 

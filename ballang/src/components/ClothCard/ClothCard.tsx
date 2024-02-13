@@ -4,8 +4,10 @@ import Link from "next/link";
 interface ClothCardProps {
   cloth: {
     id: string;
-    title: string;
-    url: string;
+    name: string;
+    imgSrc: string;
+    originalPrice: string;
+    price: string;
   };
 }
 
@@ -14,13 +16,13 @@ function ClothCard({ cloth }: ClothCardProps) {
     <Link href={`clothes/${cloth.id}`} className="flex flex-col">
       <div className=" relative w-full aspect-video">
         <Image
-          src={cloth.url}
-          alt={cloth.title}
+          src={cloth.imgSrc}
+          alt={cloth.name}
           fill
           unoptimized
           className="object-cover"
         />
-        <h6>{cloth.title}</h6>
+        <h6>{cloth.name}</h6>
       </div>
     </Link>
   );
