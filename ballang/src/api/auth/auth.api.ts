@@ -19,6 +19,11 @@ class AuthAPI {
 
   signUp = async (dto: SignUpDto) => {
     const url = "/auth/sign-up";
-    const response = await this.coreClient.post<SignUpData>;
+    const response = await this.coreClient.post<SignUpData>(url, dto);
+    const data = response.data;
+
+    return data;
   };
 }
+
+export default AuthAPI;

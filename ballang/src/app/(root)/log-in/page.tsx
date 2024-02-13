@@ -1,6 +1,21 @@
+"use client";
+import API from "@/api/index.api";
 import Page from "@/components/Page";
+import { useAuth } from "@/contexts/auth.context";
+import { useAppDispatch } from "@/redux/store";
+import { useState } from "react";
+import { useMutation } from "react-query";
 
 function LogInPage() {
+  const dispatch = useAppDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { mutateAsync } = useMutation({ mutationFn: API.auth.logIn });
+  const { logIn } = useAuth();
+
+  const handleClickLogIn = async () => {
+    const { accessToken } = await mutateAsync({ email, password });
+  };
   return (
     <Page>
       <h2 className=" font-bold text-3xl text-center my-12 text-black">
@@ -14,6 +29,8 @@ function LogInPage() {
           <input
             id="email"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className=" block border w-full px-6 py-3 rounded focus:border-black outline-none transition border-slate-300"
           />
           <label
@@ -25,6 +42,8 @@ function LogInPage() {
           <input
             id="password"
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className=" block border w-full px-6 py-3 rounded focus:border-black outline-none transition border-slate-300"
           />
         </div>

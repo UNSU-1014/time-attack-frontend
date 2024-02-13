@@ -5,8 +5,3 @@ export type LogInData = {
 export type SignUpData = {
   accessToken: string;
 };
-
-// export const client = axios.create({
-//   baseURL:
-
-// })

@@ -1,4 +1,4 @@
-export type CartItem = {
+export type Cloth = {
   id: string;
-  count: number;
+  title: string;
 };
