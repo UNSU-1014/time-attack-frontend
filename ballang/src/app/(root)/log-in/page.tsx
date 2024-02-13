@@ -1,10 +1,10 @@
 "use client";
 import API from "@/api/index.api";
-import Page from "@/components/Page";
 import { useAuth } from "@/contexts/auth.context";
 import { useAppDispatch } from "@/redux/store";
 import { useState } from "react";
 import { useMutation } from "react-query";
+import Modal from "../Modal/Modal";
 
 function LogInPage() {
   const dispatch = useAppDispatch();
@@ -17,10 +17,7 @@ function LogInPage() {
     const { accessToken } = await mutateAsync({ email, password });
   };
   return (
-    <Page>
-      <h2 className=" font-bold text-3xl text-center my-12 text-black">
-        로그인
-      </h2>
+    <Modal title="로그인하기">
       <section className="flex flex-col  items-center gap-y-4 max-w-sm mx-auto w-full">
         <div className="grid gap-y-1.5 w-full">
           <label htmlFor="email" className=" text-sm font-medium text-gray-800">
@@ -51,7 +48,7 @@ function LogInPage() {
           로그인하기
         </button>
       </section>
-    </Page>
+    </Modal>
   );
 }
 

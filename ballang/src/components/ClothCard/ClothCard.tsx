@@ -12,6 +12,7 @@ interface ClothCardProps {
 }
 
 function ClothCard({ cloth }: ClothCardProps) {
+  console.log(cloth);
   return (
     <Link href={`clothes/${cloth.id}`} className="flex flex-col">
       <div className=" relative w-full aspect-video">

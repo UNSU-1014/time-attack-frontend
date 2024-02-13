@@ -7,7 +7,6 @@ async function getClothes() {
   );
   const data = await response.json();
   const products = data["result"];
-  console.log(products);
   return products;
 }
 
